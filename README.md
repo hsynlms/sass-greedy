@@ -21,7 +21,7 @@ $_defaults: (
 ```
 
 **2. grid options**
-Provided grid generation options. e.g.:
+Provided grid generation options. sass-greedy defaults can be overridden here. e.g.:
 ```scss
 @include greedy((
   'columns': 14,        // number of the grid columns
