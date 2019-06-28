@@ -1,5 +1,5 @@
 # What is sass-greedy?
-sass-greedy is a flexible, lightweight and simple grid generator for SASS. It only generates `row` and `column` styles and supports multiple grid generation.
+**sass-greedy** is a flexible, lightweight and simple grid generator for SASS. It only generates `row` and `column` styles and supports multiple grid generation.
 
 If you would like to have more control of the grid generation process, see mixin injection.
 
@@ -8,8 +8,8 @@ sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media)
 # What is mixin injection?
 sass-greedy has `three mixin injections` to give you `more flexibility` while building your own grid system(s). You have access to reach `greedy options` in all three injections as well. Let's dive into deep.
 
-## How to access greedy options in the injection mixin?
-`greedy-options` function is available inside all injection mixins. Its the combination of greedy defaults (1) and the provied grid options (2).
+## How to access greedy options in the mixin injection?
+`greedy-options` function is available inside all mixin injections. Its the combination of greedy defaults (1) and the provied grid options (2).
 
 **1. sass-greedy defaults**
 ```scss
@@ -25,7 +25,7 @@ Provided grid generation options. e.g.:
 ```scss
 @include greedy((
   'columns': 14,        // number of the grid columns
-  'gutter': 1.6rem,     // grid rows gutter size
+  'gutter': 1.6rem,     // grid columns gutter size
   'sizes': (            // grid sizes (output e.g.: .slice-xs-1, slice-xl-2 etc.). supports breakpoints
     '',                 // mandatory. empty string size also here to generate columns if no breakpoint / responsive design needed
     ('name': 'xs', 'breakpoint': '<sm'),
@@ -59,7 +59,7 @@ Let's assume that you wish to have `.no-gutters` css style that can be used for 
 }
 
 // output example
-.row{
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-left: -0.8rem;
