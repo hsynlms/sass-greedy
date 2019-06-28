@@ -1,0 +1,9 @@
+// greedy defaults
+$_defaults: (
+  'row-class': 'row',
+  'column-class': 'column',
+  'numbered-column-class': 'slice'
+);
+
+// greedy grid generator options for internal usage
+$_options: null;

@@ -1,0 +1,54 @@
+// grid generator
+@mixin grid-generator($option) {
+  $_options: merge-objects($option) !global;
+  
+  // row element styles
+  .#{greedy-options('row-class')} {
+    margin-left: -#{greedy-options('gutter') / 2};
+    margin-right: -#{greedy-options('gutter') / 2};
+    
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  // column element styles
+  .#{greedy-options('column-class')} {
+    padding-left: #{greedy-options('gutter') / 2};
+    padding-right: #{greedy-options('gutter') / 2};
+  
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  
+  // run custom row mixins if it does exist
+  @if mixin-exists('greedy-custom-row-mixins') {
+    @include greedy-custom-row-mixins();
+  }
+  
+  // generate columns for each sizes
+  @each $size in greedy-options('sizes') {
+    $size-name: $size;
+    $breakpoint: null;
+    
+    // generate columns if the size has breakpoint for responsiveness by using include-media
+    @if type-of($size-name) == map {
+      $size-name: map-get($size, 'name');
+      $breakpoint: map-get($size, 'breakpoint');
+      
+      @include media($breakpoint) {
+        @include column-generator($size-name);
+      }
+    } @else {
+      @include column-generator($size-name);
+    }
+    
+    // run custom size mixins if it does exist
+    @if mixin-exists('greedy-custom-size-mixins') {
+      @include greedy-custom-size-mixins($size-name, $breakpoint);
+    }
+  }
+
+  // reset internal option variable
+  $_options: null;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "sass-greedy",
+  "version": "1.0.0",
+  "description": "a flexible, lightweight and simple grid generator for sass",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsynlms/sass-greedy.git"
+  },
+  "keywords": [
+    "sass"
+  ],
+  "author": "Huseyin Elmas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hsynlms/sass-greedy/issues"
+  },
+  "homepage": "https://github.com/hsynlms/sass-greedy#readme",
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "del": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "^2.0.7",
+    "include-media": "^1.4.9",
+    "node-sass": "^4.12.0"
+  }
+}

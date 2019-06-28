@@ -1,0 +1,4 @@
+// greedy options getter method
+@function greedy-options($prop) {
+  @return map-get($_options, $prop);
+}

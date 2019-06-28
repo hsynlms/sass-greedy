@@ -1,0 +1,27 @@
+// column generator
+@mixin column-generator($size) {
+  $column-name: greedy-options('column-class');
+  
+  // if numbered-column-class is provided, use it instead of column-class
+  @if greedy-options('numbered-column-class') {
+    $column-name: greedy-options('numbered-column-class');
+  }
+  
+  // if size is provided, insert it at the end of the column-name
+  @if $size and $size != '' {
+    $column-name: '#{$column-name}-#{$size}';
+  }
+  
+  @for $i from 1 through greedy-options('columns') {
+    // e.g.: slice-1
+    .#{$column-name}-#{$i} {
+      width: percentage($i / greedy-options('columns'));
+      flex: none;
+    }
+    
+    // run custom column mixins if it does exist
+    @if mixin-exists('greedy-custom-column-mixins') {
+      @include greedy-custom-column-mixins($size, $i);
+    }
+  }
+}

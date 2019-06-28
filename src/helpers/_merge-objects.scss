@@ -1,0 +1,24 @@
+// merge objects into one
+@function merge-objects($objects...) {
+  // check if any object is provided
+  @if length($objects) == 0 {
+    @error 'no object provided to be merged';
+  }
+  
+  // get default options into merged object by default
+  $merged: $_defaults;
+  
+  // loop each provided objects to be merged
+  @each $object in $objects {
+    // check if object has any property
+    @if length($object) > 0 {
+      // loop all existing proerties in the object
+      @each $propKey, $propVal in $object {
+        $merged: map-merge($merged, ($propKey: $propVal));
+      }
+    }
+  }
+  
+  // return the merged object
+  @return $merged;
+}
