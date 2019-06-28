@@ -3,6 +3,8 @@ sass-greedy is a flexible, lightweight and simple grid generator for SASS. It on
 
 If you would like to have more control of the grid generation process, see mixin injection.
 
+sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media) to give the support of breakpoint for your grid system.
+
 # What is mixin injection?
 sass-greedy has `three mixin injections` to give you `more flexibility` while building your own grid system(s). You have access to reach `greedy options` in all three injections as well. Let's dive into deep.
 
