@@ -3,7 +3,7 @@
 
 If you would like to have more control of the grid generation process, see mixin injection.
 
-sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media) to give the support of breakpoint for your grid system.
+sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media) to give the support of breakpoints for your grid system.
 
 # What is mixin injection?
 sass-greedy has `three mixin injections` to give you `more flexibility` while building your own grid system(s). You have access to reach `greedy options` in all three injections as well. Let's dive into deep.
@@ -42,7 +42,7 @@ Provided grid generation options. e.g.:
 ### Custom row mixin injection
 sass-greedy runs `custom row mixin injection` which is provided by you externally `before generating column styles`. It gives you the flexibility to add `custom css styles for row element of the grid`.
 
-Let's assume that you wish to have `.no-gutters` css style that can be used for any row element of your grid system. Here is an example to do it in sass-greedy:
+Let's assume that you wish to have `.no-gutters` css style that can be used for any row element of the grid system. Here is an example to do it in sass-greedy:
 
 ```scss
 @mixin greedy-custom-row-mixins() {
@@ -169,3 +169,6 @@ Let's assume that you wish to have `.order` css style to have the flexibility to
   }
 }
 ```
+
+# License
+This project is licensed under the terms of the [MIT license](https://github.com/hsynlms/sass-greedy/blob/master/LICENSE).
