@@ -1,5 +1,7 @@
 # What is sass-greedy?
-**sass-greedy** is a flexible, lightweight and simple grid generator for SASS. It only generates `row` and `column` styles and supports multiple grid generation.
+**sass-greedy** is a flexible, lightweight and simple grid generator for Sass.
+
+It simply generates `row` and `column` styles and supports multiple grid generation.
 
 If you would like to have more control of the grid generation process, see mixin injection.
 
