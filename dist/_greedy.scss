@@ -1,5 +1,5 @@
 /*!
-* sass-greedy v1.0.0
+* sass-greedy v1.0.1
 * A flexible, lightweight and simple grid generator for sass.
 *
 * Author: Huseyin Elmas
@@ -9,11 +9,25 @@
   @return map-get($_options, $prop);
 }
 
+// greedy logger
+@function log($msg, $type: 'error') {
+  // valiadate message
+  @if $msg and $msg != '' {
+    @if $type == 'error' {
+      @error $msg;
+    } @else if $type == 'warn' {
+      @warn $msg;
+    }
+  }
+
+  @return true;
+}
+
 // merge objects into one
 @function merge-objects($objects...) {
   // check if any object is provided
   @if length($objects) == 0 {
-    @error 'no object provided to be merged';
+    $_: log('No object provided to be merged.');
   }
   
   // get default options into merged object by default
@@ -130,7 +144,7 @@ $_options: null;
 // initialize grid generator
 @mixin greedy($options...) {
   @if length($options) == 0 {
-    @error 'no grid option provided';
+    $_: log('No grid option provided.');
   }
   
   // loop each grid config that will be generated

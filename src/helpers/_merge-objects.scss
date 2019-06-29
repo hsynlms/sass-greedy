@@ -2,7 +2,7 @@
 @function merge-objects($objects...) {
   // check if any object is provided
   @if length($objects) == 0 {
-    @error 'no object provided to be merged';
+    $_: log('No object provided to be merged.');
   }
   
   // get default options into merged object by default

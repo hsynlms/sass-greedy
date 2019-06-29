@@ -1,0 +1,13 @@
+// greedy logger
+@function log($msg, $type: 'error') {
+  // valiadate message
+  @if $msg and $msg != '' {
+    @if $type == 'error' {
+      @error $msg;
+    } @else if $type == 'warn' {
+      @warn $msg;
+    }
+  }
+
+  @return true;
+}

@@ -1,7 +1,7 @@
 // initialize grid generator
 @mixin greedy($options...) {
   @if length($options) == 0 {
-    @error 'no grid option provided';
+    $_: log('No grid option provided.');
   }
   
   // loop each grid config that will be generated
