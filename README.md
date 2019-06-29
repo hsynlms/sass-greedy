@@ -1,17 +1,16 @@
 # What is sass-greedy?
-**sass-greedy** is a flexible, lightweight and simple grid generator for Sass.
+> **sass-greedy** is a flexible, lightweight and simple grid generator for Sass.
 
-It simply generates `row` and `column` styles and supports multiple grid generation.
+Basically, it generates row and column styles and supports breakpoints for responsiveness and multiple grid generation. There are three mixin injections to give you more flexibility while building your own grid.
 
-If you would like to have more control of the grid generation process, see mixin injection.
-
-sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media) to give the support of breakpoints for your grid system.
+sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media) to give the support of breakpoints for your responsive grid system.
 
 # What is mixin injection?
-sass-greedy has `three mixin injections` to give you `more flexibility` while building your own grid system(s). You have access to reach `greedy options` in all three injections as well. Let's dive into deep.
+Mixin injection allows you to put custom grid styles in a simple way to have `more control/flexibility` on the grid system. You have access to reach `greedy options` to be used if it's necessary for all mixin injections.
 
-## How to access greedy options in the mixin injection?
-`greedy-options` function is available inside all mixin injections. Its the combination of greedy defaults (1) and the provied grid options (2).
+Greedy options are the combination of greedy defaults and the grid options provided when sass-greedy invoked.
+
+> Greedy defaults can be overridden in the grid options.
 
 **1. sass-greedy defaults**
 ```scss
@@ -23,7 +22,6 @@ $_defaults: (
 ```
 
 **2. grid options**
-Provided grid generation options. sass-greedy defaults can be overridden here. e.g.:
 ```scss
 @include greedy((
   'columns': 14,        // number of the grid columns
@@ -39,12 +37,14 @@ Provided grid generation options. sass-greedy defaults can be overridden here. e
 ));
 ```
 
-## Mixin injections
+Let's dive deep.
+
+# Mixin injections
 
 ### Custom row mixin injection
-sass-greedy runs `custom row mixin injection` which is provided by you externally `before generating column styles`. It gives you the flexibility to add `custom css styles for row element of the grid`.
+sass-greedy runs `custom row mixin injection` which is defined externally before generating grid column styles.
 
-Let's assume that you wish to have `.no-gutters` css style that can be used for any row element of the grid system. Here is an example to do it in sass-greedy:
+Let’s assume that you wish to have **no-gutters** CSS style for row element of the grid system to remove spacings. Here is an example to do it in sass-greedy:
 
 ```scss
 @mixin greedy-custom-row-mixins() {
@@ -79,9 +79,9 @@ Let's assume that you wish to have `.no-gutters` css style that can be used for 
 ```
 
 ### Custom size mixin injection
-sass-greedy runs `custom size mixin injection` which is provided by you externally `while looping column sizes`.
+sass-greedy runs `custom size mixin injection` which is defined externally `while looping column sizes`.
 
-Let's assume that you wish to have `.flex-row-reverse` css style to have the flexibility to change the flex row direction in any provided size. Here is an example to do it in sass-greedy:
+Let’s assume that you wish to have **flex-row-reverse** CSS style to have the flexibility to change the row flex direction in any provided breakpoint size. Here is an example to do it in sass-greedy:
 
 ```scss
 @mixin greedy-custom-size-mixins($size, $breakpoint) {
@@ -118,9 +118,9 @@ Let's assume that you wish to have `.flex-row-reverse` css style to have the fle
 ```
 
 ### Custom column mixin injection
-sass-greedy runs `custom column mixin injection` which is provided by you externally `while generating each numbered column styles for each provided sizes`.
+sass-greedy runs `custom column mixin injection` which is defined externally `while generating each numbered column styles in all provided sizes`.
 
-Let's assume that you wish to have `.order` css style to have the flexibility to change the order of the flex grid columns in any provided size. Here is an example to do it in sass-greedy:
+Let’s assume that you wish to have **order** CSS style to have the flexibility to change the order of the flex grid columns in any provided breakpoint size. Here is an example to do it in sass-greedy:
 
 ```scss
 @mixin greedy-custom-column-mixins($size, $iteration) {
