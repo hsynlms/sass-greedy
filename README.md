@@ -1,6 +1,8 @@
 # What is sass-greedy?
 > **sass-greedy** is a flexible, lightweight and simple grid generator for Sass.
 
+[![NPM](https://nodei.co/npm/sass-greedy.png)](https://nodei.co/npm/sass-greedy/)
+
 Basically, it generates row and column styles and supports breakpoints for responsiveness and multiple grid generation. There are three mixin injections to give you more flexibility while building your own grid.
 
 sass-greedy uses [include-media](https://github.com/eduardoboucas/include-media) to give the support of breakpoints for your responsive grid system.
