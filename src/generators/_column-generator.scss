@@ -24,8 +24,8 @@
       flex: none;
     }
     
-    // run custom column mixins if it does exist
-    @if mixin-exists('greedy-custom-column-mixins') {
+    // run custom column mixins if it does exist and injections are active
+    @if is-injection-enabled('greedy-custom-column-mixins') {
       @include greedy-custom-column-mixins($size, $i);
     }
   }

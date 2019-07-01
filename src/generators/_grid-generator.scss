@@ -8,14 +8,6 @@
     $_: log('length of sizes cannot be zero.');
   }
 
-  @if type-of($column-class) != string {
-    $_: log('column-class must be a string.');
-  }
-
-  @if $column-class == '' {
-    $_: log('column-class cannot be left empty.');
-  }
-
   // check if grid-wrapper-class is provided
   @if type-of(greedy-options('grid-wrapper-class')) == string and greedy-options('grid-wrapper-class') != '' {
     $row-class: '#{greedy-options('grid-wrapper-class')} .#{greedy-options('row-class')}';
@@ -35,20 +27,22 @@
     }
   }
   
-  // column element styles
-  .#{$column-class} {
-    @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
-      padding-left: #{greedy-options('gutter') / 2};
-      padding-right: #{greedy-options('gutter') / 2};
+  @if type-of(greedy-options('column-class')) == string and greedy-options('column-class') != '' {
+    // column element styles
+    .#{$column-class} {
+      @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
+        padding-left: #{greedy-options('gutter') / 2};
+        padding-right: #{greedy-options('gutter') / 2};
+      }
+    
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-shrink: 1;
     }
-  
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
   }
   
-  // run custom row mixins if it does exist
-  @if mixin-exists('greedy-custom-row-mixins') {
+  // run custom row mixins if it does exist and injections are active
+  @if is-injection-enabled('greedy-custom-row-mixins') {
     @include greedy-custom-row-mixins();
   }
   
@@ -69,8 +63,8 @@
       @include column-generator($size-name);
     }
     
-    // run custom size mixins if it does exist
-    @if mixin-exists('greedy-custom-size-mixins') {
+    // run custom size mixins if it does exist and injections are active
+    @if is-injection-enabled('greedy-custom-size-mixins') {
       @include greedy-custom-size-mixins($size-name, $breakpoint);
     }
   }
