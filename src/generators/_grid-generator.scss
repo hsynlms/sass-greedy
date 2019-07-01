@@ -1,6 +1,6 @@
 // grid generator
 @mixin grid-generator($option) {
-  $_options: merge-objects($option) !global;
+  $_options: merge-objects($_defaults, $option) !global;
   
   // row element styles
   .#{greedy-options('row-class')} {

@@ -5,8 +5,7 @@
     $_: log('No object provided to be merged.');
   }
   
-  // get default options into merged object by default
-  $merged: $_defaults;
+  $merged: ();
   
   // loop each provided objects to be merged
   @each $object in $objects {
