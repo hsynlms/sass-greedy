@@ -2,7 +2,8 @@
 $_defaults: (
   'row-class': 'row',
   'column-class': 'column',
-  'numbered-column-class': 'slice'
+  'numbered-column-class': 'slice',
+  'grid-wrapper-class': false
 );
 
 // greedy grid generator options for internal usage
