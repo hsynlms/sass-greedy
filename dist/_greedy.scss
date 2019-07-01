@@ -1,21 +1,29 @@
 /*!
-* sass-greedy v1.0.3
+* sass-greedy v1.0.4
 * A flexible, lightweight and simple grid generator for sass.
 *
 * Author: Huseyin Elmas
 */
-// check injection if it is enabled
-@function is-injection-enabled($mixin-name) {
-  @if greedy-options('injections') == true and mixin-exists($mixin-name) {
+// greedy options getter method
+@function greedy-options($prop) {
+  @return map-get($_options, $prop);
+}
+
+// check if grid wrapper is enabled
+@function is-enabled($option, $mixin-name: null) {
+  @if $mixin-name and greedy-options($option) == true and mixin-exists($mixin-name) {
+    @return true;
+  }
+
+  @if type-of(greedy-options($option)) == string and greedy-options($option) != '' {
+    @return true;
+  }
+
+  @if type-of(greedy-options($option)) == number and greedy-options($option) > 0 {
     @return true;
   }
 
   @return false;
-}
-
-// greedy options getter method
-@function greedy-options($prop) {
-  @return map-get($_options, $prop);
 }
 
 // greedy logger
@@ -71,7 +79,7 @@
   }
 
   // check if grid-wrapper-class is provided
-  @if type-of(greedy-options('grid-wrapper-class')) == string and greedy-options('grid-wrapper-class') != '' {
+  @if is-enabled('grid-wrapper-class') {
     $column-name: '#{greedy-options('grid-wrapper-class')} .#{$column-name}';
   }
   
@@ -83,7 +91,7 @@
     }
     
     // run custom column mixins if it does exist and injections are active
-    @if is-injection-enabled('greedy-custom-column-mixins') {
+    @if is-enabled('injections', 'greedy-custom-column-mixins') {
       @include greedy-custom-column-mixins($size, $i);
     }
   }
@@ -100,15 +108,15 @@
   }
 
   // check if grid-wrapper-class is provided
-  @if type-of(greedy-options('grid-wrapper-class')) == string and greedy-options('grid-wrapper-class') != '' {
+  @if is-enabled('grid-wrapper-class') {
     $row-class: '#{greedy-options('grid-wrapper-class')} .#{greedy-options('row-class')}';
     $column-class: '#{greedy-options('grid-wrapper-class')} .#{greedy-options('column-class')}';
   }
 
-  @if type-of(greedy-options('row-class')) == string and greedy-options('row-class') != '' {
+  @if is-enabled('row-class') {
     // row element styles
     .#{$row-class} {
-      @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
+      @if is-enabled('gutter') {
         margin-left: -#{greedy-options('gutter') / 2};
         margin-right: -#{greedy-options('gutter') / 2};
       }
@@ -118,10 +126,10 @@
     }
   }
   
-  @if type-of(greedy-options('column-class')) == string and greedy-options('column-class') != '' {
+  @if is-enabled('column-class') {
     // column element styles
     .#{$column-class} {
-      @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
+      @if is-enabled('gutter') {
         padding-left: #{greedy-options('gutter') / 2};
         padding-right: #{greedy-options('gutter') / 2};
       }
@@ -133,7 +141,7 @@
   }
   
   // run custom row mixins if it does exist and injections are active
-  @if is-injection-enabled('greedy-custom-row-mixins') {
+  @if is-enabled('injections', 'greedy-custom-row-mixins') {
     @include greedy-custom-row-mixins();
   }
   
@@ -155,7 +163,7 @@
     }
     
     // run custom size mixins if it does exist and injections are active
-    @if is-injection-enabled('greedy-custom-size-mixins') {
+    @if is-enabled('injections', 'greedy-custom-size-mixins') {
       @include greedy-custom-size-mixins($size-name, $breakpoint);
     }
   }
