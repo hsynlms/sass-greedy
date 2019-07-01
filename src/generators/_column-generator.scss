@@ -13,7 +13,7 @@
   }
 
   // check if grid-wrapper-class is provided
-  @if type-of(greedy-options('grid-wrapper-class')) == string and greedy-options('grid-wrapper-class') != '' {
+  @if is-enabled('grid-wrapper-class') {
     $column-name: '#{greedy-options('grid-wrapper-class')} .#{$column-name}';
   }
   
@@ -25,7 +25,7 @@
     }
     
     // run custom column mixins if it does exist and injections are active
-    @if is-injection-enabled('greedy-custom-column-mixins') {
+    @if is-enabled('injections', 'greedy-custom-column-mixins') {
       @include greedy-custom-column-mixins($size, $i);
     }
   }

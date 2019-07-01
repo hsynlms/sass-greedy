@@ -1,8 +1,0 @@
-// check injection if it is enabled
-@function is-injection-enabled($mixin-name) {
-  @if greedy-options('injections') == true and mixin-exists($mixin-name) {
-    @return true;
-  }
-
-  @return false;
-}

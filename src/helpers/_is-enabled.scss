@@ -1,0 +1,16 @@
+// check if grid wrapper is enabled
+@function is-enabled($option, $mixin-name: null) {
+  @if $mixin-name and greedy-options($option) == true and mixin-exists($mixin-name) {
+    @return true;
+  }
+
+  @if type-of(greedy-options($option)) == string and greedy-options($option) != '' {
+    @return true;
+  }
+
+  @if type-of(greedy-options($option)) == number and greedy-options($option) > 0 {
+    @return true;
+  }
+
+  @return false;
+}
