@@ -1,20 +1,46 @@
 // grid generator
 @mixin grid-generator($option) {
   $_options: merge-objects($_defaults, $option) !global;
-  
-  // row element styles
-  .#{greedy-options('row-class')} {
-    margin-left: -#{greedy-options('gutter') / 2};
-    margin-right: -#{greedy-options('gutter') / 2};
-    
-    display: flex;
-    flex-wrap: wrap;
+  $row-class: greedy-options('row-class');
+  $column-class: greedy-options('column-class');
+
+  @if length(greedy-options('sizes')) == 0 {
+    $_: log('length of sizes cannot be zero.');
+  }
+
+  @if type-of($column-class) != string {
+    $_: log('column-class must be a string.');
+  }
+
+  @if $column-class == '' {
+    $_: log('column-class cannot be left empty.');
+  }
+
+  // check if grid-wrapper-class is provided
+  @if type-of(greedy-options('grid-wrapper-class')) == string and greedy-options('grid-wrapper-class') != '' {
+    $row-class: '#{greedy-options('grid-wrapper-class')} .#{greedy-options('row-class')}';
+    $column-class: '#{greedy-options('grid-wrapper-class')} .#{greedy-options('column-class')}';
+  }
+
+  @if type-of(greedy-options('row-class')) == string and greedy-options('row-class') != '' {
+    // row element styles
+    .#{$row-class} {
+      @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
+        margin-left: -#{greedy-options('gutter') / 2};
+        margin-right: -#{greedy-options('gutter') / 2};
+      }
+      
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
   
   // column element styles
-  .#{greedy-options('column-class')} {
-    padding-left: #{greedy-options('gutter') / 2};
-    padding-right: #{greedy-options('gutter') / 2};
+  .#{$column-class} {
+    @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
+      padding-left: #{greedy-options('gutter') / 2};
+      padding-right: #{greedy-options('gutter') / 2};
+    }
   
     flex-basis: 0;
     flex-grow: 1;

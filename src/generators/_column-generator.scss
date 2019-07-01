@@ -11,6 +11,11 @@
   @if $size and $size != '' {
     $column-name: '#{$column-name}-#{$size}';
   }
+
+  // check if grid-wrapper-class is provided
+  @if type-of(greedy-options('grid-wrapper-class')) == string and greedy-options('grid-wrapper-class') != '' {
+    $column-name: '#{greedy-options('grid-wrapper-class')} .#{$column-name}';
+  }
   
   @for $i from 1 through greedy-options('columns') {
     // e.g.: slice-1
