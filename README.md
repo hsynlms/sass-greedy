@@ -15,13 +15,14 @@ Greedy options are the combination of greedy defaults and the grid options provi
 > Greedy defaults can be overridden in the grid options.
 
 **1. sass-greedy defaults**
-```scss
-$_defaults: (
-  'row-class': 'row',               // row class name (output e.g.: .row)
-  'column-class': 'column',         // column class name (output e.g.: .column)
-  'numbered-column-class': 'slice'  // numbered column class name (output e.g.: .slice-1, slice-2 etc.)
-);
-```
+
+| Property Name          | Type           | Default    | Description
+| :--------------------- | :------------- | :--------- | :----------
+| row-class              | string/boolean | `'row'`    | Class name of the row element of the grid. If its `false`, row element CSS style will not be rendered.
+| column-class           | string/boolean | `'column'` | Class name of the column element of the grid. If its `false`, column element CSS style will not be rendered.
+| numbered-column-class  | string         | `'slice'`  | Class name of the numbered column element of the grid. If its empty, `column-class` will be used instead.
+| grid-wrapper-class     | string/boolean | `false`    | Class name of the wrapper element of the grid system. If its `false`, grid styles will not be children of any other class.
+| injections             | boolean        | `true`     | Enable/disable mixin injections.
 
 **2. grid options**
 ```scss
