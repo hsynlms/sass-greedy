@@ -21,7 +21,7 @@ Greedy options are the combination of greedy defaults and the grid options provi
 | row-class              | string/boolean | `'row'`    | Class name of the row element of the grid. If its `false`, row element CSS style will not be rendered.
 | column-class           | string/boolean | `'column'` | Class name of the column element of the grid. If its `false`, column element CSS style will not be rendered.
 | numbered-column-class  | string         | `'slice'`  | Class name of the numbered column element of the grid. If its empty, `column-class` will be used instead.
-| grid-wrapper-class     | string/boolean | `false`    | Class name of the wrapper element of the grid system. If its `false`, grid styles will not be children of any other class.
+| grid-wrapper-class     | string/boolean | `false`    | Class name of the wrapper element of the grid system. If its `false`, grid row and columns will not be children of the grid wrapper class anymore.
 | injections             | boolean        | `true`     | Enable/disable mixin injections.
 
 **2. grid options**
@@ -174,6 +174,11 @@ Let’s assume that you wish to have **order** CSS style to have the flexibility
   }
 }
 ```
+
+# Roadmap
+
+1. Multiple breakpoint query support.
+2. Spesific mixin injection enabling/disabling feature.
 
 # License
 This project is licensed under the terms of the [MIT license](https://github.com/hsynlms/sass-greedy/blob/master/LICENSE).
