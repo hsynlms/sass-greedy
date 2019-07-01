@@ -3,7 +3,8 @@ $_defaults: (
   'row-class': 'row',
   'column-class': 'column',
   'numbered-column-class': 'slice',
-  'grid-wrapper-class': false
+  'grid-wrapper-class': false,
+  'injections': true
 );
 
 // greedy grid generator options for internal usage
