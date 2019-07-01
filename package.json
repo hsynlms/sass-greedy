@@ -1,6 +1,6 @@
 {
   "name": "sass-greedy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a flexible, lightweight and simple grid generator for sass",
   "main": "index.js",
   "scripts": {

@@ -1,9 +1,18 @@
 /*!
-* sass-greedy v1.0.2
+* sass-greedy v1.0.3
 * A flexible, lightweight and simple grid generator for sass.
 *
 * Author: Huseyin Elmas
 */
+// check injection if it is enabled
+@function is-injection-enabled($mixin-name) {
+  @if greedy-options('injections') == true and mixin-exists($mixin-name) {
+    @return true;
+  }
+
+  @return false;
+}
+
 // greedy options getter method
 @function greedy-options($prop) {
   @return map-get($_options, $prop);
@@ -73,8 +82,8 @@
       flex: none;
     }
     
-    // run custom column mixins if it does exist
-    @if mixin-exists('greedy-custom-column-mixins') {
+    // run custom column mixins if it does exist and injections are active
+    @if is-injection-enabled('greedy-custom-column-mixins') {
       @include greedy-custom-column-mixins($size, $i);
     }
   }
@@ -88,14 +97,6 @@
 
   @if length(greedy-options('sizes')) == 0 {
     $_: log('length of sizes cannot be zero.');
-  }
-
-  @if type-of($column-class) != string {
-    $_: log('column-class must be a string.');
-  }
-
-  @if $column-class == '' {
-    $_: log('column-class cannot be left empty.');
   }
 
   // check if grid-wrapper-class is provided
@@ -117,20 +118,22 @@
     }
   }
   
-  // column element styles
-  .#{$column-class} {
-    @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
-      padding-left: #{greedy-options('gutter') / 2};
-      padding-right: #{greedy-options('gutter') / 2};
+  @if type-of(greedy-options('column-class')) == string and greedy-options('column-class') != '' {
+    // column element styles
+    .#{$column-class} {
+      @if type-of(greedy-options('gutter')) == number and greedy-options('gutter') > 0 {
+        padding-left: #{greedy-options('gutter') / 2};
+        padding-right: #{greedy-options('gutter') / 2};
+      }
+    
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-shrink: 1;
     }
-  
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
   }
   
-  // run custom row mixins if it does exist
-  @if mixin-exists('greedy-custom-row-mixins') {
+  // run custom row mixins if it does exist and injections are active
+  @if is-injection-enabled('greedy-custom-row-mixins') {
     @include greedy-custom-row-mixins();
   }
   
@@ -151,8 +154,8 @@
       @include column-generator($size-name);
     }
     
-    // run custom size mixins if it does exist
-    @if mixin-exists('greedy-custom-size-mixins') {
+    // run custom size mixins if it does exist and injections are active
+    @if is-injection-enabled('greedy-custom-size-mixins') {
       @include greedy-custom-size-mixins($size-name, $breakpoint);
     }
   }
@@ -166,7 +169,8 @@ $_defaults: (
   'row-class': 'row',
   'column-class': 'column',
   'numbered-column-class': 'slice',
-  'grid-wrapper-class': false
+  'grid-wrapper-class': false,
+  'injections': true
 );
 
 // greedy grid generator options for internal usage
