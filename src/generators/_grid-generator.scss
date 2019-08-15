@@ -56,7 +56,7 @@
       $size-name: map-get($size, 'name');
       $breakpoint: map-get($size, 'breakpoint');
       
-      @include media($breakpoint) {
+      @include media($breakpoint...) {
         @include column-generator($size-name);
 
         // run custom size mixins if it does exist and injections are active
