@@ -177,7 +177,7 @@ Let’s assume that you wish to have **order** CSS style to have the flexibility
 
 # Roadmap
 
-1. Multiple breakpoint query support.
+1. ~~Multiple breakpoint query support.~~
 2. Spesific mixin injection enabling/disabling feature.
 
 # License
