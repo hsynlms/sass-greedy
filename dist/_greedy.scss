@@ -1,5 +1,5 @@
 /*!
-* sass-greedy v1.0.5
+* sass-greedy v1.1.0
 * A flexible, lightweight and simple grid generator for sass.
 *
 * Author: Huseyin Elmas
@@ -155,7 +155,7 @@
       $size-name: map-get($size, 'name');
       $breakpoint: map-get($size, 'breakpoint');
       
-      @include media($breakpoint) {
+      @include media($breakpoint...) {
         @include column-generator($size-name);
 
         // run custom size mixins if it does exist and injections are active
