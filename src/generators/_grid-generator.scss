@@ -58,14 +58,14 @@
       
       @include media($breakpoint) {
         @include column-generator($size-name);
+
+        // run custom size mixins if it does exist and injections are active
+        @if is-enabled('injections', 'greedy-custom-size-mixins') {
+          @include greedy-custom-size-mixins($size-name, $breakpoint);
+        }
       }
     } @else {
       @include column-generator($size-name);
-    }
-    
-    // run custom size mixins if it does exist and injections are active
-    @if is-enabled('injections', 'greedy-custom-size-mixins') {
-      @include greedy-custom-size-mixins($size-name, $breakpoint);
     }
   }
 
