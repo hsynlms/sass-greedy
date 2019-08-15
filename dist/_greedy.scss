@@ -1,5 +1,5 @@
 /*!
-* sass-greedy v1.0.4
+* sass-greedy v1.0.5
 * A flexible, lightweight and simple grid generator for sass.
 *
 * Author: Huseyin Elmas
@@ -157,14 +157,14 @@
       
       @include media($breakpoint) {
         @include column-generator($size-name);
+
+        // run custom size mixins if it does exist and injections are active
+        @if is-enabled('injections', 'greedy-custom-size-mixins') {
+          @include greedy-custom-size-mixins($size-name, $breakpoint);
+        }
       }
     } @else {
       @include column-generator($size-name);
-    }
-    
-    // run custom size mixins if it does exist and injections are active
-    @if is-enabled('injections', 'greedy-custom-size-mixins') {
-      @include greedy-custom-size-mixins($size-name, $breakpoint);
     }
   }
 
