@@ -20,12 +20,12 @@
   },
   "homepage": "https://github.com/hsynlms/sass-greedy#readme",
   "devDependencies": {
-    "chalk": "^2.4.2",
-    "del": "^4.1.1",
+    "chalk": "^4.1.1",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-header": "^2.0.7",
     "include-media": "^1.4.9",
-    "node-sass": "^4.12.0"
+    "node-sass": "^5.0.0"
   }
 }
