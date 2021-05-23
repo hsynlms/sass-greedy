@@ -179,6 +179,3 @@ Let’s assume that you wish to have **order** CSS style to have the flexibility
 
 1. ~~Multiple breakpoint query support.~~
 2. Spesific mixin injection enabling/disabling feature.
-
-# License
-This project is licensed under the terms of the [MIT license](https://github.com/hsynlms/sass-greedy/blob/master/LICENSE).
