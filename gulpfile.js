@@ -7,10 +7,10 @@ const pkg = require('./package.json')
 
 const tpl = `
 '/*!
-* sass-greedy v<%= version %>
+* <%= name %> v<%= version %>
 * A flexible, lightweight and simple grid generator for sass.
-*
-* Author: <%= author %>
+* <%= license %> License
+* by <%= author %>
 */
 `.trimStart()
 
@@ -28,13 +28,7 @@ gulp.task('build', function () {
   return gulp.src(paths.sass)
     .pipe(concat('_greedy.scss'))
     .pipe(
-      header(
-        tpl,
-        {
-          version: pkg.version,
-          author: pkg.author
-        }
-      )
+      header(tpl, pkg)
     )
     .pipe(gulp.dest(paths.dist))
     .on('end', function () {
